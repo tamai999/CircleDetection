@@ -20,7 +20,7 @@ class ViewController: UIViewController {
             roundnessThresholdLabel.text = roundnessThreshold.dot3f
         }
     }
-
+    
     private let ciContext = CIContext(options: [
         .cacheIntermediates : false,
         .name : "ViewControllerCIContext"
@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         binaryThreshold = 0.2
         roundnessThreshold = 0.8
         roundnessLabel.text = ""
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
         // キャプチャ開始
         imageCapture.delegate = self
         imageCapture.session.startRunning()
-
+        
         // ライトON
         imageCapture.setTouch(level: 1.0)
     }
@@ -60,7 +60,7 @@ extension ViewController: ImageCaptureDelegate {
     func captureOutput(ciImage: CIImage) {
         // 右回転して向きを縦に直す
         let rotatedImage = ciImage.oriented(.right)
-
+        
         // 円を検出
         guard let result = circleDetector.perform(ciImage: rotatedImage) else { return }
         
@@ -96,7 +96,7 @@ private extension ViewController {
         contourPathLayers.forEach {
             $0.removeFromSuperlayer()
         }
-
+        
         let detectFrame = CGRect(x: 0,
                                  y: imageView.frame.height / 2.0 - imageView.frame.width / 2.0,
                                  width: imageView.frame.width,

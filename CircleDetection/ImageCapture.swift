@@ -13,7 +13,7 @@ class ImageCapture: NSObject {
                                                      autoreleaseFrequency: .workItem)
     private var captureDevice: AVCaptureDeviceInput?
     private(set) var session = AVCaptureSession()
-
+    
     // キャプチャー画像の通知用デリゲート
     var delegate: ImageCaptureDelegate?
     
@@ -32,7 +32,7 @@ class ImageCapture: NSObject {
             if level <= 0.0 {
                 device.torchMode = .off
             } else {
-                try device.setTorchModeOn(level: level)
+                try device.setTorchModeOn(level: min(level, 1.0))
             }
             
             device.unlockForConfiguration()
@@ -61,7 +61,7 @@ class ImageCapture: NSObject {
         videoDataOutput.setSampleBufferDelegate(self, queue: videoDataOutputQueue)
         let captureConnection = videoDataOutput.connection(with: .video)
         captureConnection?.isEnabled = true
-
+        
         session.commitConfiguration()
     }
 }

@@ -116,7 +116,7 @@ private extension CircleDetector {
         morphologyErodeFilter.inputImage = dilateImage
         morphologyErodeFilter.radius = Const.morphologyClosingRadius
         guard let openingImage = morphologyErodeFilter.outputImage else { return nil }
-
+        
         // 画像中央の正方形を切り取る
         let cropRect = CGRect(x: ciImage.extent.width/2 - detectSize/2,
                               y: ciImage.extent.height/2 - detectSize/2,
@@ -147,11 +147,10 @@ private extension CircleDetector {
     func calcRoundness(points: [simd_float2]) -> (area: Float, perimeter: Float, roundness: Float) {
         var area: Float = 0
         var perimeter: Float = 0
-        
-        var nextPoint: simd_float2 = .init()
+        var nextPoint: simd_float2!
         
         for i in 0..<points.count {
-            let point = simd_float2(points[i])
+            let point = points[i]
             if i == (points.count - 1) {
                 nextPoint = points[0]
             } else {
@@ -161,14 +160,13 @@ private extension CircleDetector {
             // 面積
             area += simd_cross(point, nextPoint).z
             // 周囲長
-//            perimeter += simd_distance(point, nextPoint)
-            perimeter += simd_fast_distance(point, nextPoint)
+            perimeter += simd_distance(point, nextPoint)
         }
         
         area = abs(area / 2)
         
         // 円形度
-        let roundness = (4.0 * Float.pi * area) / (perimeter * perimeter)
+        let roundness = (4.0 * .pi * area) / (perimeter * perimeter)
         return (area, perimeter, roundness)
     }
 }
