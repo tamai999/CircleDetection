@@ -147,10 +147,10 @@ private extension CircleDetector {
     func calcRoundness(points: [simd_float2]) -> (area: Float, perimeter: Float, roundness: Float) {
         var area: Float = 0
         var perimeter: Float = 0
-        var nextPoint: simd_float2!
         
         for i in 0..<points.count {
             let point = points[i]
+            let nextPoint: simd_float2
             if i == (points.count - 1) {
                 nextPoint = points[0]
             } else {
