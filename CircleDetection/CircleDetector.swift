@@ -64,6 +64,9 @@ class CircleDetector {
         // 円形度計算
         var circles: [DetectedCircles.Circle] = []
         contours.forEach { contour in
+            // 輪郭のノイズを減らす
+//            guard let contour = try? contour.polygonApproximation(epsilon: 0.002) else { return }
+            
             let result = calcRoundness(contour: contour)
             circles.append(.init(cgPath: contour.normalizedPath,
                                  roundness: result.roundness,
@@ -129,6 +132,7 @@ private extension CircleDetector {
     // 輪郭検出
     private func getContours(ciImage: CIImage) -> [VNContour] {
         let contourRequest = VNDetectContoursRequest.init()
+//        contourRequest.maximumImageDimension = 512
         contourRequest.maximumImageDimension = Int(detectSize)
         contourRequest.detectsDarkOnLight = true
         
