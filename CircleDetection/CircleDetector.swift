@@ -64,7 +64,7 @@ class CircleDetector {
         // 円形度計算
         var circles: [DetectedCircles.Circle] = []
         contours.forEach { contour in
-            let result = calcRoundness(points: contour.normalizedPoints)
+            let result = calcRoundness(contour: contour)
             circles.append(.init(cgPath: contour.normalizedPath,
                                  roundness: result.roundness,
                                  area: result.area,
@@ -143,30 +143,27 @@ private extension CircleDetector {
 
 // MARK: - 円形度計算
 
-private extension CircleDetector {
-    func calcRoundness(points: [simd_float2]) -> (area: Float, perimeter: Float, roundness: Float) {
-        var area: Float = 0
-        var perimeter: Float = 0
-        
-        for i in 0..<points.count {
-            let point = points[i]
-            let nextPoint: simd_float2
-            if i == (points.count - 1) {
-                nextPoint = points[0]
-            } else {
-                nextPoint = points[i + 1]
+extension CircleDetector {
+    private func calcRoundness(contour: VNContour) -> (area: Float, perimeter: Float, roundness: Float) {
+        do {
+            // 面積
+            var area: Double = 0.0
+            try VNGeometryUtils.calculateArea(&area, for: contour, orientedArea: false)
+            
+            // 周囲長
+            var perimeter: Double = 0.0
+            try VNGeometryUtils.calculatePerimeter(&perimeter, for: contour)
+            
+            // 円形度
+            var roundness: Double = 0.0
+            if perimeter != 0.0 {
+                roundness = (4.0 * .pi * area) / (perimeter * perimeter)
             }
             
-            // 面積
-            area += simd_cross(point, nextPoint).z
-            // 周囲長
-            perimeter += simd_distance(point, nextPoint)
+            return (Float(area), Float(perimeter), Float(roundness))
+            
+        } catch {
+            return (0.0, 0.0, 0.0)
         }
-        
-        area = abs(area / 2)
-        
-        // 円形度
-        let roundness = (4.0 * .pi * area) / (perimeter * perimeter)
-        return (area, perimeter, roundness)
     }
 }
