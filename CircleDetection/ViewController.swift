@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     private lazy var imageCapture = ImageCapture()
     private lazy var circleDetector = CircleDetector()
     private var contourPathLayers: [CAShapeLayer] = []
+    private var hasExportRequest = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +53,10 @@ class ViewController: UIViewController {
     @IBAction func roundnessThresholdDidChange(_ sender: UISlider) {
         roundnessThreshold = sender.value
     }
+    
+    @IBAction func exportButtonDidTapped(_ sender: Any) {
+        hasExportRequest = true
+    }
 }
 
 // MARK: - ImageCaptureDelegate
@@ -70,6 +75,15 @@ extension ViewController: ImageCaptureDelegate {
                               width: detectSize,
                               height: detectSize)
         let inputImage = rotatedImage.cropped(to: cropRect)
+        
+        // 検出結果をログ出力
+        if hasExportRequest {
+            hasExportRequest = false
+            print("area,roundness")
+            result.circles.forEach { circle in
+                print("\(circle.area.dot9f),\(circle.roundness.dot9f)")
+            }
+        }
         
         // 入力画像を生成
         guard let outputImage = ciContext.createCGImage(inputImage, from: inputImage.extent) else {
@@ -109,7 +123,7 @@ private extension ViewController {
             pathLayer.path = cgPath
             // 円形度でパスの色を変える
             pathLayer.strokeColor =  $0.roundness > roundnessThreshold ? UIColor.blue.cgColor : UIColor.red.cgColor
-            pathLayer.lineWidth = 4
+            pathLayer.lineWidth = 3
             pathLayer.fillColor = UIColor.clear.cgColor
             imageView.layer.addSublayer(pathLayer)
             contourPathLayers.append(pathLayer)
@@ -131,5 +145,9 @@ extension CGPath {
 extension Float {
     var dot3f: String {
         String(format: "%.3f", self)
+    }
+    
+    var dot9f: String {
+        String(format: "%.9f", self)
     }
 }

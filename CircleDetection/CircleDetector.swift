@@ -65,7 +65,7 @@ class CircleDetector {
         var circles: [DetectedCircles.Circle] = []
         contours.forEach { contour in
             // 輪郭のノイズを減らす
-            // guard let contour = try? contour.polygonApproximation(epsilon: 0.002) else { return }
+             guard let contour = try? contour.polygonApproximation(epsilon: 0.002) else { return }
             
             let result = calcRoundness(contour: contour)
             circles.append(.init(cgPath: contour.normalizedPath,
