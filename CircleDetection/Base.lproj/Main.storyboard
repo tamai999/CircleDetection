@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,102 +17,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eZ-Sf-RGU">
-                                <rect key="frame" x="0.0" y="241" width="414" height="414"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="4eZ-Sf-RGU" secondAttribute="height" multiplier="1:1" id="9Fr-kV-4Zr"/>
-                                </constraints>
-                            </imageView>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.0" maxValue="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="MfK-lt-OKZ">
-                                <rect key="frame" x="198" y="777.5" width="168" height="31"/>
-                                <connections>
-                                    <action selector="binaryThresholdDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="YWV-W5-k2L"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK7-dm-crM">
-                                <rect key="frame" x="127" y="782" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="円形度閾値" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJ3-jw-HaL">
-                                <rect key="frame" x="16" y="825" width="87" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xqx-N6-Wfs">
-                                <rect key="frame" x="127" y="825" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ds0-ej-fd9">
-                                <rect key="frame" x="198" y="820.5" width="168" height="31"/>
-                                <connections>
-                                    <action selector="roundnessThresholdDidChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="MHA-yO-kib"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYl-8P-n1w">
-                                <rect key="frame" x="183" y="202" width="48" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="二値化閾値" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr0-tR-nv1">
-                                <rect key="frame" x="16" y="782" width="87" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C54-Nc-62a">
-                                <rect key="frame" x="304" y="64" width="90" height="31"/>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="NOo-iH-h6b"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="CSV出力">
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="exportButtonDidTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Y9O-Co-wka"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="L37-gL-GWx">
+                                <rect key="frame" x="4.5" y="48" width="405" height="810"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4eZ-Sf-RGU">
+                                        <rect key="frame" x="0.0" y="0.0" width="405" height="405"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4eZ-Sf-RGU" secondAttribute="height" multiplier="1:1" id="9Fr-kV-4Zr"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aYI-Sh-C1X">
+                                        <rect key="frame" x="0.0" y="405" width="405" height="405"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aYI-Sh-C1X" secondAttribute="height" multiplier="1:1" id="uTs-ko-1dV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xqx-N6-Wfs" firstAttribute="centerY" secondItem="SJ3-jw-HaL" secondAttribute="centerY" id="1HV-wd-7tE"/>
-                            <constraint firstItem="ds0-ej-fd9" firstAttribute="trailing" secondItem="MfK-lt-OKZ" secondAttribute="trailing" id="Any-wL-q6U"/>
-                            <constraint firstItem="MfK-lt-OKZ" firstAttribute="centerY" secondItem="nr0-tR-nv1" secondAttribute="centerY" id="DPr-hA-frK"/>
-                            <constraint firstItem="4eZ-Sf-RGU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Ikz-fj-NwJ"/>
-                            <constraint firstItem="fK7-dm-crM" firstAttribute="centerY" secondItem="nr0-tR-nv1" secondAttribute="centerY" id="Ovs-u1-EYS"/>
-                            <constraint firstItem="ds0-ej-fd9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="200" id="Reo-MN-IDI"/>
-                            <constraint firstItem="4eZ-Sf-RGU" firstAttribute="top" secondItem="jYl-8P-n1w" secondAttribute="bottom" constant="15" id="Ryf-PQ-MWt"/>
-                            <constraint firstItem="xqx-N6-Wfs" firstAttribute="leading" secondItem="SJ3-jw-HaL" secondAttribute="trailing" constant="24" id="Rzv-J7-zic"/>
-                            <constraint firstItem="SJ3-jw-HaL" firstAttribute="top" secondItem="nr0-tR-nv1" secondAttribute="bottom" constant="22" id="gWA-46-htS"/>
-                            <constraint firstItem="fK7-dm-crM" firstAttribute="leading" secondItem="nr0-tR-nv1" secondAttribute="trailing" constant="24" id="hG3-IA-HPh"/>
-                            <constraint firstItem="ds0-ej-fd9" firstAttribute="centerY" secondItem="SJ3-jw-HaL" secondAttribute="centerY" id="haP-0k-9m9"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ds0-ej-fd9" secondAttribute="trailing" constant="50" id="iGj-2e-PmR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SJ3-jw-HaL" secondAttribute="bottom" constant="16" id="in2-gc-JYq"/>
-                            <constraint firstItem="SJ3-jw-HaL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="jxT-Ri-9xq"/>
-                            <constraint firstItem="4eZ-Sf-RGU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="n7Z-sZ-gRw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4eZ-Sf-RGU" secondAttribute="trailing" id="oTd-ae-1U9"/>
-                            <constraint firstItem="C54-Nc-62a" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="szY-8q-vuV"/>
-                            <constraint firstItem="SJ3-jw-HaL" firstAttribute="leading" secondItem="nr0-tR-nv1" secondAttribute="leading" id="t0y-m8-Bsj"/>
-                            <constraint firstItem="jYl-8P-n1w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uNc-sZ-Eq3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C54-Nc-62a" secondAttribute="trailing" constant="20" id="w8R-dh-XQO"/>
-                            <constraint firstItem="ds0-ej-fd9" firstAttribute="leading" secondItem="MfK-lt-OKZ" secondAttribute="leading" id="ybw-RF-Oam"/>
+                            <constraint firstItem="L37-gL-GWx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="132-JV-w2t"/>
+                            <constraint firstItem="L37-gL-GWx" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" id="aDJ-yA-cNv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L37-gL-GWx" secondAttribute="bottom" constant="4" id="jCK-ei-2xS"/>
+                            <constraint firstItem="L37-gL-GWx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nnv-8h-kPG"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="binaryThresholdLabel" destination="fK7-dm-crM" id="ZeZ-UT-PCD"/>
-                        <outlet property="binaryThresholdSlider" destination="MfK-lt-OKZ" id="hlR-S4-H1f"/>
+                        <outlet property="graphView" destination="aYI-Sh-C1X" id="oev-z7-vhg"/>
                         <outlet property="imageView" destination="4eZ-Sf-RGU" id="8T6-ep-lWb"/>
-                        <outlet property="roundnessLabel" destination="jYl-8P-n1w" id="eEj-iZ-Y3B"/>
-                        <outlet property="roundnessThresholdLabel" destination="xqx-N6-Wfs" id="KQO-hE-2Kr"/>
-                        <outlet property="roundnessThresholdSlider" destination="ds0-ej-fd9" id="M91-B3-7xI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -122,9 +55,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

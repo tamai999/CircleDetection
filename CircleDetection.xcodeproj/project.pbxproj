@@ -15,6 +15,9 @@
 		97615EC2276C3EC1000E1C1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97615EC0276C3EC1000E1C1F /* LaunchScreen.storyboard */; };
 		97615ECA276C3F58000E1C1F /* ImageCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97615EC9276C3F58000E1C1F /* ImageCapture.swift */; };
 		97615ECC276DE1D6000E1C1F /* CircleDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97615ECB276DE1D6000E1C1F /* CircleDetector.swift */; };
+		97A37B7D277B2C1C00915232 /* SimpleCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A37B7C277B2C1C00915232 /* SimpleCanvas.swift */; };
+		97A37B7F277BDAC100915232 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A37B7E277BDAC100915232 /* SampleData.swift */; };
+		97EE840D2776B7BE005F69A2 /* MDClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE840C2776B7BE005F69A2 /* MDClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		97615EC3276C3EC1000E1C1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		97615EC9276C3F58000E1C1F /* ImageCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCapture.swift; sourceTree = "<group>"; };
 		97615ECB276DE1D6000E1C1F /* CircleDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDetector.swift; sourceTree = "<group>"; };
+		97A37B7C277B2C1C00915232 /* SimpleCanvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCanvas.swift; sourceTree = "<group>"; };
+		97A37B7E277BDAC100915232 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		97EE840C2776B7BE005F69A2 /* MDClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDClass.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +71,13 @@
 				97615EB9276C3EC0000E1C1F /* ViewController.swift */,
 				97615EC9276C3F58000E1C1F /* ImageCapture.swift */,
 				97615ECB276DE1D6000E1C1F /* CircleDetector.swift */,
+				97EE840C2776B7BE005F69A2 /* MDClass.swift */,
+				97A37B7C277B2C1C00915232 /* SimpleCanvas.swift */,
 				97615EBB276C3EC0000E1C1F /* Main.storyboard */,
 				97615EBE276C3EC1000E1C1F /* Assets.xcassets */,
 				97615EC0276C3EC1000E1C1F /* LaunchScreen.storyboard */,
 				97615EC3276C3EC1000E1C1F /* Info.plist */,
+				97A37B7E277BDAC100915232 /* SampleData.swift */,
 			);
 			path = CircleDetection;
 			sourceTree = "<group>";
@@ -147,8 +156,11 @@
 				97615ECA276C3F58000E1C1F /* ImageCapture.swift in Sources */,
 				97615EBA276C3EC0000E1C1F /* ViewController.swift in Sources */,
 				97615EB6276C3EC0000E1C1F /* AppDelegate.swift in Sources */,
+				97A37B7D277B2C1C00915232 /* SimpleCanvas.swift in Sources */,
 				97615ECC276DE1D6000E1C1F /* CircleDetector.swift in Sources */,
+				97EE840D2776B7BE005F69A2 /* MDClass.swift in Sources */,
 				97615EB8276C3EC0000E1C1F /* SceneDelegate.swift in Sources */,
+				97A37B7F277BDAC100915232 /* SampleData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
