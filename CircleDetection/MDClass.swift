@@ -13,9 +13,9 @@ class MDClass {
     /// 特徴xy共分散
     var covarianceXY: Float
     /// 相関係数
-    var rho: Float? {
-        guard stdDeviationX != 0, stdDeviationY != 0 else { return nil }
-        return covarianceXY / (stdDeviationX * stdDeviationY)
+    var rho: Float {
+        let result = covarianceXY / (stdDeviationX * stdDeviationY)
+        return (result.isNaN || result.isInfinite) ? 0 : result
     }
     
     internal init(meanX: Float, meanY: Float, stdDeviationX: Float, stdDeviationY: Float, covarianceXY: Float) {
@@ -31,13 +31,10 @@ class MDClass {
     ///   - x: 特徴x テストデータ
     ///   - y: 特徴y テストデータ
     func mahalanobisDistance(x: Float, y: Float) -> Float? {
-        guard stdDeviationX != 0, stdDeviationY != 0, let rho = rho else {
-            return nil
-        }
-        
         let pX = pow((x - meanX), 2) / pow(stdDeviationX, 2)
         let pY = pow((y - meanY), 2) / pow(stdDeviationY, 2)
         let xy2rho = (2.0 * rho * (x - meanX) * (y - meanY)) / (stdDeviationX * stdDeviationY)
-        return sqrtf((pX - xy2rho + pY) / (1 - pow(rho, 2)))
+        let result = sqrtf((pX - xy2rho + pY) / (1 - pow(rho, 2)))
+        return (result.isNaN || result.isInfinite) ? 0 : result
     }
 }

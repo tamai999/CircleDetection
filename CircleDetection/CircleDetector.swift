@@ -159,9 +159,9 @@ private extension CircleDetector {
             try VNGeometryUtils.calculatePerimeter(&perimeter, for: contour)
             
             // 円形度
-            var roundness: Double = 0.0
-            if perimeter != 0.0 {
-                roundness = (4.0 * .pi * area) / (perimeter * perimeter)
+            var roundness = (4.0 * .pi * area) / (perimeter * perimeter)
+            if roundness.isInfinite || roundness.isNaN {
+                roundness = 0
             }
             
             return (Float(area), Float(perimeter), Float(roundness))
